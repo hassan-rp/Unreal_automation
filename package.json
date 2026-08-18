@@ -1,0 +1,27 @@
+{
+  "name": "unreal-automation",
+  "version": "1.0.0",
+  "description": "Playwright framework for Unreal Mobile automation",
+  "main": "index.js",
+  "scripts": {
+    "test:prod": "cross-env NODE_ENV=prod APP_ENV=prod ENV_TYPE=prod npx playwright test",
+    "test:dev": "cross-env NODE_ENV=dev APP_ENV=dev ENV_TYPE=dev npx playwright test",
+    "clean:cookies": "rm -rf playwright/.auth"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^20.14.8",
+    "@types/pdf-parse": "^1.1.4",
+    "cross-env": "^7.0.3",
+    "playwright": "^1.54.1",
+    "typescript": "5.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pdf-parse": "^1.1.1"
+  },
+  "keywords": [],
+  "type": "commonjs"
+}

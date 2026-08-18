@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+
+# Config / secrets
+src/config/
+
+# Tooling / OS
+*.log
+.DS_Store
+out/
