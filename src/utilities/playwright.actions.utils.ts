@@ -231,10 +231,10 @@ export class PlaywrightActionFactory {
 }
 
   public async waitForSelector(locatorInfo: LocatorInfo, timeout: number = DEFAULT_TIMEOUT_MS): Promise<void> {
-    await safeStep(`⏳ Waiting for "${locatorInfo.description}" to be attached`, async (): Promise<void> => {
+    await safeStep(`⏳ Waiting for "${locatorInfo.description}" to be visible`, async (): Promise<void> => {
       await locatorInfo.locator.waitFor({ state: 'attached', timeout });
-      await this.testInfo.attach(`⏳ "${locatorInfo.description}" is attached`, {
-        body: `⏳ "${locatorInfo.description}" is attached`,
+      await this.testInfo.attach(`⏳ "${locatorInfo.description}" is visible`, {
+        body: `⏳ "${locatorInfo.description}" is visible`,
         contentType: 'text/plain',
       });
     });

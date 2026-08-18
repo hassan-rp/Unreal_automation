@@ -55,10 +55,10 @@ export class PlaywrightVerificationFactory {
   }
 
   public async waitForSelector(locatorInfo: LocatorInfo, timeout: number = 30000): Promise<void> {
-    await safeStep(`⏳ Waiting for "${locatorInfo.description}" to be attached`, async (): Promise<void> => {
+    await safeStep(`⏳ Waiting for "${locatorInfo.description}" to be visible`, async (): Promise<void> => {
       await locatorInfo.locator.waitFor({ state: 'attached', timeout });
-      await this.testInfo.attach(`⏳ "${locatorInfo.description}" is attached`, {
-        body: `⏳ "${locatorInfo.description}" is attached`,
+      await this.testInfo.attach(`⏳ "${locatorInfo.description}" is visible`, {
+        body: `⏳ "${locatorInfo.description}" is visible`,
         contentType: 'text/plain',
       });
     });
@@ -66,7 +66,8 @@ export class PlaywrightVerificationFactory {
 
   public async waitForElementToDisappear(element: LocatorInfo, timeout: number = 30000): Promise<void> {
     await safeStep(`⏳ Waiting for the ${element.description} to disappear`, async (): Promise<void> => {
-      await element.locator.waitFor({ state: 'hidden', timeout });
+      // Wait for the  element to either become hidden or be removed from the DOM
+      await element.locator.waitFor({ state: 'detached', timeout });
 
       await this.testInfo.attach(`✅ "${element.description}" has disappeared`, {
         body: `✅ "${element.description}" has disappeared`,

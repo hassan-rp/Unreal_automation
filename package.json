@@ -9,8 +9,8 @@
     "clean:cookies": "rm -rf playwright/.auth",
     "clean:allure": "rm -rf allure-results",
     "allure:copy:history": "copyfiles -u 1 allure-report/history/** allure-results",
-    "allure:generate": "npm run allure:copy:history && allure generate allure-results --clean",
-    "allure:open": "allure open"
+    "allure:generate": "npm run allure:copy:history && allure generate ./allure-results --output ./allure-report",
+    "allure:open": "allure open ./allure-report"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +18,7 @@
     "@playwright/test": "^1.54.1",
     "@types/node": "^20.14.8",
     "@types/pdf-parse": "^1.1.4",
-    "allure-commandline": "^2.43.0",
+    "allure": "^3.14.3",
     "allure-playwright": "^3.10.2",
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
