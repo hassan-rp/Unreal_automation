@@ -92,6 +92,7 @@ export class LoginPage {
             }
             console.log('Login successful, navigating to the welcome page.');
             await this.playwrightVerificationsFactory.expectElementExist(this.locators.verifyWelcomePage);
+            await this.playwrightVerificationsFactory.verifyContains(this.page.url(), '/line-details');
         };
 
         try {
@@ -116,6 +117,7 @@ export class LoginPage {
             await this.page.waitForLoadState();
             await this.playwrightVerificationsFactory.waitForVisibility(this.locators.verifyLogoutPage);
             await this.playwrightVerificationsFactory.expectElementExist(this.locators.verifyLogoutPage);
+            await this.playwrightVerificationsFactory.verifyContains(this.page.url(), '/login');
         });
     }
 
