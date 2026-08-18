@@ -1,7 +1,7 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 import { devices } from "@playwright/test";
 import os from "node:os";
-import { getBaseURL, getContextOptions, getEnvVariable } from "@utilities/env.utils";
+import { getBaseURL, getContextOptions, getEnvVariable } from "./src/utilities/env.utils";
 
 const isCI = Boolean(
   (process.env.CI && process.env.CI !== "false") || process.env.JENKINS_URL || process.env.BUILD_NUMBER,

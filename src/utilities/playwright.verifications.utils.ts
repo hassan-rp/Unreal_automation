@@ -46,7 +46,7 @@ export class PlaywrightVerificationFactory {
 
   public async waitForSec(seconds: number): Promise<void> {
     await safeStep(`⏳ Waiting for ${seconds} second(s)`, async (): Promise<void> => {
-      await this.page.waitForTimeout(seconds * 1000); // Convexc rt seconds to milliseconds
+      await this.page.waitForTimeout(seconds * 1000); // Convert seconds to milliseconds
       await this.testInfo.attach(`⏳ Waited for ${seconds} second(s)`, {
         body: `Waited for ${seconds} second(s)`,
         contentType: 'text/plain',
@@ -55,10 +55,10 @@ export class PlaywrightVerificationFactory {
   }
 
   public async waitForSelector(locatorInfo: LocatorInfo, timeout: number = 30000): Promise<void> {
-    await safeStep(`⏳ Waiting for "${locatorInfo.description}" to be visible`, async (): Promise<void> => {
+    await safeStep(`⏳ Waiting for "${locatorInfo.description}" to be attached`, async (): Promise<void> => {
       await locatorInfo.locator.waitFor({ state: 'attached', timeout });
-      await this.testInfo.attach(`⏳ "${locatorInfo.description}" is visible`, {
-        body: `⏳ "${locatorInfo.description}" is visible`,
+      await this.testInfo.attach(`⏳ "${locatorInfo.description}" is attached`, {
+        body: `⏳ "${locatorInfo.description}" is attached`,
         contentType: 'text/plain',
       });
     });
@@ -66,8 +66,7 @@ export class PlaywrightVerificationFactory {
 
   public async waitForElementToDisappear(element: LocatorInfo, timeout: number = 30000): Promise<void> {
     await safeStep(`⏳ Waiting for the ${element.description} to disappear`, async (): Promise<void> => {
-      // Wait for the  element to either become hidden or be removed from the DOM
-      await element.locator.waitFor({ state: 'detached', timeout });
+      await element.locator.waitFor({ state: 'hidden', timeout });
 
       await this.testInfo.attach(`✅ "${element.description}" has disappeared`, {
         body: `✅ "${element.description}" has disappeared`,

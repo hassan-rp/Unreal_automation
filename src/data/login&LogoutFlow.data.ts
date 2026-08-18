@@ -1,5 +1,6 @@
 import { LoginDetails, LogoutPage } from '@interfaces/login&LogoutFlow.interface';
 import { TestCaseData } from '@interfaces/testcase.data.interface';
+import { getEnvVariable } from '@utilities/env.utils';
 
 export interface LoginTestCaseData {
     testCaseData: TestCaseData;
@@ -11,14 +12,14 @@ interface LogoutPageTestCaseData {
 }
 
 const loginTestData: { [key: string]: LoginTestCaseData } = {
-    'AQ-132-Login': {
+    'AQ-134-Login': {
         loginDetails: {
-            username: process.env.user_name || '',
-            password: process.env.password || '',
+            username: getEnvVariable('user_name'),
+            password: getEnvVariable('password'),
         },
         testCaseData: {
-            tags: '@p0 @smoke @login @AQ-132',
-            testCase: 'AQ-132-Login-and-Logout-Flow',
+            tags: '@p0 @smoke @login @AQ-134',
+            testCase: 'AQ-134-Login-and-Logout-Flow',
             testDescription: 'validate the Admin user can login to the Application',
             testSummary: 'Admin User login',
         },
@@ -26,12 +27,12 @@ const loginTestData: { [key: string]: LoginTestCaseData } = {
 };
 
 const logoutPageTestCaseData: { [key: string]: LogoutPageTestCaseData } = {
-    'AQ-132-Logout': {
+    'AQ-134-Logout': {
         logoutPage: {
         },
         testCaseData: {
-            tags: '@p0 @smoke @logout @AQ-132',
-            testCase: 'AQ-132-Logout-Page',
+            tags: '@p0 @smoke @logout @AQ-134',
+            testCase: 'AQ-134-Logout-Page',
             testDescription: 'Validate the Admin user can logout from the Application',
             testSummary: 'Admin User logins and logout',
         },

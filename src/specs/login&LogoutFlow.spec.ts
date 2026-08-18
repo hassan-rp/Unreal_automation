@@ -3,8 +3,8 @@ import { getData, logoutPage } from '@data/login&LogoutFlow.data';
 import { test } from '@fixtures/page.fixtures';
 
 test.describe('Feature: Login and Logout', () => {
-    const scenario1 = getData('AQ-132-Login');
-    const scenario2 = logoutPage('AQ-132-Logout');
+    const scenario1 = getData('AQ-134-Login');
+    const scenario2 = logoutPage('AQ-134-Logout');
 
     test(`
         Test case: '${scenario1.testCaseData.testCase}'
