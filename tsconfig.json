@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "node16",
+        "resolveJsonModule": true,
+        "moduleResolution": "node16",
+        "baseUrl": ".",
+        "outDir": "out",
+        "sourceMap": true,
+        "types": ["node"],
+        "typeRoots": ["./node_modules/@types"],
+        "paths": {
+            "@page/*": ["./src/page/*"],
+            "@fixtures/*": ["./src/fixtures/*"],
+            "@utilities/*": ["./src/utilities/*"],
+            "@data/*": ["./src/data/*"],
+            "@interfaces/*": ["./src/interfaces/*"],
+            "@enums/*": ["./src/enums/*"]
+        },
+        "strict": false,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    }
+}
