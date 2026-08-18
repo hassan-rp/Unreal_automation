@@ -1,5 +1,6 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 import { devices } from "@playwright/test";
+import os from "node:os";
 import { getBaseURL, getContextOptions, getEnvVariable } from "@utilities/env.utils";
 
 const isCI = Boolean(
@@ -19,6 +20,18 @@ const config: PlaywrightTestConfig = {
   reporter: [
     ["list", { printSteps: true }],
     ["html", { open: "never" }],
+    ["allure-playwright", {
+      resultsDir: "allure-results",
+      detail: true,
+      suiteTitle: true,
+      environmentInfo: {
+        OS: os.platform(),
+        Architecture: os.arch(),
+        NodeVersion: process.version,
+        url: getBaseURL(),
+        ENV_TYPE: getEnvVariable("ENV_TYPE", "local"),
+      },
+    }],
   ],
   use: {
     video: "retain-on-failure",

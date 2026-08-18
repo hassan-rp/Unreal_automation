@@ -6,7 +6,11 @@
   "scripts": {
     "test:prod": "cross-env NODE_ENV=prod APP_ENV=prod ENV_TYPE=prod npx playwright test",
     "test:dev": "cross-env NODE_ENV=dev APP_ENV=dev ENV_TYPE=dev npx playwright test",
-    "clean:cookies": "rm -rf playwright/.auth"
+    "clean:cookies": "rm -rf playwright/.auth",
+    "clean:allure": "rm -rf allure-results",
+    "allure:copy:history": "copyfiles -u 1 allure-report/history/** allure-results",
+    "allure:generate": "npm run allure:copy:history && allure generate allure-results --clean",
+    "allure:open": "allure open"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +18,9 @@
     "@playwright/test": "^1.54.1",
     "@types/node": "^20.14.8",
     "@types/pdf-parse": "^1.1.4",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "playwright": "^1.54.1",
     "typescript": "5.3"
